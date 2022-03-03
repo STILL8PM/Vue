@@ -12,7 +12,7 @@
 			<h1>学校信息</h1>
 			<h2>学校名称：{{school.name}}</h2>
 			<h2>学校地址：{{school.address}}</h2>
-			<h2>校长是：{{school.leader}}</h2>
+			<h2 v-if="school.leader">校长是：{{school.leader}}</h2>
 			<hr/>
 			<h1>学生信息</h1>
 			<button @click="addSex">添加一个性别属性，默认值是男</button>
@@ -54,6 +54,7 @@
 				addSex(){
 					// Vue.set(this.student,'sex','男')
 					this.$set(this.student,'sex','男')
+					this.$set(this.school,'leader','Jack')
 				}
 			}
 		})
