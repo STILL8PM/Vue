@@ -33,11 +33,8 @@
 									(2). for(){}
 		-->
     <!-- 准备一个容器 -->
-    <div id="root">
-        <h1>Hello {{name}} {{address}} </h1>
-    </div>
-    <div id="root2">
-        <h1>Hello {{name}} {{address}} </h1>
+    <div id="demo">
+        <h1>Hello {{name.toUpperCase()}} {{address}} </h1>
     </div>
 
     <script>
@@ -45,17 +42,10 @@
 
         //创建Vue实例
         new Vue({
-            el: '#root',//用于指定当前Vue实例为哪个容器服务，值通常为css选择器字符串
+            el: '#demo',//用于指定当前Vue实例为哪个容器服务，值通常为css选择器字符串
             data: {//data中用于存储数据，数据供el所指定的容器去使用，值暂时写成一个对象
-                name: '尚硅谷',
+                name: 'atguigu',
                 address: '上海'
-            }
-        })
-        new Vue({
-            el: '#root2',//用于指定当前Vue实例为哪个容器服务，值通常为css选择器字符串
-            data: {//data中用于存储数据，数据供el所指定的容器去使用，值暂时写成一个对象
-                name: '尚硅谷',
-                address: '北京'
             }
         })
     </script>
