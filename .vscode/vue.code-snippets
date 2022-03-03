@@ -17,7 +17,7 @@
 	// }
 	"Print to console": {
 		"scope": "javascript,typescript",
-		"prefix": "ve",
+		"prefix": "ved",
 		"body": [
 			"new Vue({",
 			"	el:'#root',",
