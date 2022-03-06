@@ -2,13 +2,12 @@
 import Vue from 'vue'
 //引入App
 import App from './App.vue'
+//全局混入
+import {hunhe,hunhe2} from './mixin'
 //关闭生产提示
 Vue.config.productionTip = false
-//引入插件
-import plugins from './plugins'
-
-//应用插件
-Vue.use(plugins,1,2,3)
+Vue.mixin(hunhe)
+Vue.mixin(hunhe2)
 //创建vm
 new Vue({
     el: '#app',

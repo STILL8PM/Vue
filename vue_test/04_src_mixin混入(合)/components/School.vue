@@ -1,24 +1,21 @@
 <template>
   <div >
-    <h2>学校名称：{{ name | mySlice}}</h2>
+    <h2 @click="showName">学校名称：{{ name }}</h2>
     <h2>学校地址：{{ address }}</h2>
-    <button @click="test">点我测试一下hello方法</button>
   </div>
 </template>
 
 <script>
+//引入混合
+// import {hunhe, hunhe2} from '../mixin'
 export default {
   name: "School",
   data() {
     return {
-      name:'尚硅谷atguigu',
+      name:'尚硅谷',
       address:'北京'
     };
   },
-  methods: {
-    test(){
-      this.hello()
-    }
-  },
+  // mixins:[hunhe,hunhe2]
 };
 </script>
