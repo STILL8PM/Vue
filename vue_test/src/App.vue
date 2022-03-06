@@ -9,7 +9,7 @@
             :checkTodo="checkTodo"
             :deleteTodo="deleteTodo"
           />
-          <MyFooter />
+          <MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo='clearAllTodo'/>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@ export default {
       todos: [
         { id: "001", title: "抽烟", done: true },
         { id: "002", title: "喝酒", done: false },
-        { id: "003", title: "烫头", done: false },
+        { id: "003", title: "烫头", done: true },
       ],
     };
   },
@@ -46,7 +46,19 @@ export default {
     },
     //删除
     deleteTodo(id) {
-      this.todos = this.todos.filter(todo => todo.id !== id);
+      this.todos = this.todos.filter((todo) => todo.id !== id);
+    },
+    //全选or取消全选
+    checkAllTodo(done) {
+      this.todos.forEach((todo) => {
+        todo.done = done;
+      });
+    },
+    //清楚已完成
+    clearAllTodo() {
+      this.todos = this.todos.filter((todo) => {
+        return !todo.done;
+      });
     },
   },
 };
