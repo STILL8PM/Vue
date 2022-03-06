@@ -3,8 +3,12 @@
     <div id="root">
       <div class="todo-container">
         <div class="todo-wrap">
-          <MyHeader />
-          <MyList />
+          <MyHeader :addTodo="addTodo" />
+          <MyList
+            :todos="todos"
+            :checkTodo="checkTodo"
+            :deleteTodo="deleteTodo"
+          />
           <MyFooter />
         </div>
       </div>
@@ -19,6 +23,32 @@ import MyFooter from "./components/MyFooter";
 export default {
   name: "App",
   components: { MyHeader, MyList, MyFooter },
+  data() {
+    return {
+      todos: [
+        { id: "001", title: "抽烟", done: true },
+        { id: "002", title: "喝酒", done: false },
+        { id: "003", title: "烫头", done: false },
+      ],
+    };
+  },
+  methods: {
+    //添加一个todo
+    addTodo(todoObj) {
+      console.log("我是App组件我收到了数据", todoObj);
+      this.todos.unshift(todoObj);
+    },
+    //勾选或取消勾选
+    checkTodo(id) {
+      this.todos.forEach((todo) => {
+        if (todo.id === id) todo.done = !todo.done;
+      });
+    },
+    //删除
+    deleteTodo(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id);
+    },
+  },
 };
 </script>
 
