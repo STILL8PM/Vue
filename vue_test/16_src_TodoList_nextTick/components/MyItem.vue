@@ -55,10 +55,10 @@ export default {
         console.log("@");
         this.$set(todo, "isEdit", true);
       }
-      this.$nextTick(function () {
-        this.$refs.inputTitle.focus();
-      }); //官方写法$nextTick
-
+      this.$nextTick(function(){
+        this.$refs.inputTitle.focus()
+      })//官方写法$nextTick
+      
       /* setTimeout(() => {
         this.$refs.inputTitle.focus();
       }); */
