@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Count/>
+    <Count />
   </div>
 </template>
 
