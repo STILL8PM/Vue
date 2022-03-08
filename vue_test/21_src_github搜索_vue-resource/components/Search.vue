@@ -29,6 +29,7 @@ export default {
         errMsg: "",
         users: [],
       });
+      //vue-resource插件请求数据
       this.$http.get(`https://api.github.com/search/users?q=${this.keyWord}`).then(
         (response) => {
           // console.log("请求成功", response.data.items);
