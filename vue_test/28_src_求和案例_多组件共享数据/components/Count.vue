@@ -27,28 +27,27 @@ export default {
   },
   computed: {
     //借助mapState生成计算属性，从state中读取数据，（对象写法）
-    // ...mapState("countAbout",{ sum: "sum", school: "school", subject: "subject" }),
+    // ...mapState({ sum: "sum", school: "school", subject: "subject" }),
 
     //借助mapState生成计算属性，从state中读取数据，（数组写法）
-    ...mapState("countAbout", ["sum", "school", "subject"]), //"sum"既表示sum()也代表state中的sum
-    ...mapState("personAbout", ["personList"]),
+    ...mapState(["sum", "school", "subject", "personList"]), //"sum"既表示sum()也代表state中的sum
 
     //借助mapGetters生成计算属性，从getters中读取数据，（对象写法）
-    // ...mapGetters("countAbout",{bigSum:'bigSum'}),
+    // ...mapGetters({bigSum:'bigSum'}),
 
     //借助mapGetters生成计算属性，从getters中读取数据，（数组写法）
-    ...mapGetters("countAbout",["bigSum"]),
+    ...mapGetters(["bigSum"]),
   },
   methods: {
     //借助mapMutations生成对应的方法，方法中会调用commit去联系mutations（对象写法）
-    ...mapMutations("countAbout",{ increment: "JIA", decrement: "JIAN" }),
+    ...mapMutations({ increment: "JIA", decrement: "JIAN" }),
     //借助mapMutations生成对应的方法，方法中会调用commit去联系mutations（数组写法）
-    // ...mapMutations("countAbout",["JIA","JAIN" ]),//左右一样
+    // ...mapMutations(["JIA","JAIN" ]),//左右一样
 
     //借助mapActions生成对应的方法，方法中会调用dispatch去联系actions（对象写法）
-    ...mapActions("countAbout",{ incrementOdd: "jiaOdd", incrementWait: "jiaWait" }),
+    ...mapActions({ incrementOdd: "jiaOdd", incrementWait: "jiaWait" }),
     //借助mapActions生成对应的方法，方法中会调用dispatch去联系actions（数组写法）
-    // ...mapActions("countAbout",["jiaOdd", "jiaWait"]),//左右一样
+    // ...mapActions(["jiaOdd", "jiaWait"]),//左右一样
   },
 };
 </script>
