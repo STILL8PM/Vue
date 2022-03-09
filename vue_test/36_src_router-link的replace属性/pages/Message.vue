@@ -15,8 +15,6 @@
           }"
           >{{ m.title }}</router-link
         >
-        <button @click="pushShow(m)">push查看</button>&nbsp;
-        <button @click="replaceShow(m)">replace查看</button>
       </li>
     </ul>
 
@@ -36,25 +34,6 @@ export default {
         { id: "003", title: "消息3" },
       ],
     };
-  },
-  methods: {
-    pushShow(m) {
-      // console.log(this.$router);
-      this.$router.push({
-        name: "xiangqing",
-        params: { id: m.id, title: m.title },
-      });
-    },
-    replaceShow(m) {
-      // console.log(this.$router);
-      this.$router.replace({
-        name: "xiangqing",
-        params: { id: m.id, title: m.title },
-      });
-    },
-  },
-  beforeDestroy() {
-    console.log("message销毁");
   },
 };
 </script>

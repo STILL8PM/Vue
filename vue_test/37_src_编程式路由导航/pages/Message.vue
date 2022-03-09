@@ -53,8 +53,5 @@ export default {
       });
     },
   },
-  beforeDestroy() {
-    console.log("message销毁");
-  },
 };
 </script>
