@@ -1,8 +1,9 @@
 const express = require('express')
+const history = require('connect-history-api-fallback')
 
 const app = express()
-
-app.use(express, static(__dirname + '/static'))
+app.use(history())//处理history模式的刷新404问题
+app.use(express.static(__dirname + '/static'))
 
 app.get('/person', (request, response) => {
     response.send({
