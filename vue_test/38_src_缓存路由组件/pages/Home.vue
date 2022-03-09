@@ -22,6 +22,9 @@
           >
         </li>
       </ul>
+      <!-- 缓存多个 -->
+      <!-- <keep-alive :include="['News','Message']"> -->
+      <!-- 缓存一个 -->
       <keep-alive include="News">
         <router-view></router-view>
       </keep-alive>
@@ -32,6 +35,5 @@
 <script>
 export default {
   name: "Home",
-  
 };
 </script>
