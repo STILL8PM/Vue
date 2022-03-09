@@ -79,32 +79,4 @@ const router = new VueRouter({
         },
     ]
 })
-
-//全局前置路由守卫————初始化调用，每次路由切换之前被调用
-/* router.beforeEach((to, from, next) => {
-    console.log('前置路由守卫', to, from);
-    //if (to.name === 'xinwen' || to.name === 'xiaoxi'){}      
-    // if (to.path === '/home/news' || to.path === '/home/message'){}
-    if (to.meta.isAuth) {//判断是否需要鉴权
-        if (localStorage.getItem('school') === 'atguigu') {
-            // document.title = to.meta.title || '硅谷系统'
-            next()
-        } else {
-            alert('无权查看')
-        }
-    } else {
-        // document.title = to.meta.title || '硅谷系统'
-        next()
-    }
-}) */
-
-//全局后置路由守卫————初始化调用，每次路由切换之后被调用
-/* router.afterEach((to, from) => {
-    console.log('后置路由守卫', to, from);
-    if (to.meta.title) {
-        document.title = to.meta.title//最佳
-    } else {
-        document.title = "硅谷系统"
-    }
-}) */
 export default router

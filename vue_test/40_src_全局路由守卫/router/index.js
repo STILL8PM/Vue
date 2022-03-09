@@ -28,22 +28,6 @@ const router = new VueRouter({
                     path: 'news',
                     component: News,
                     meta: { title: '新闻', isAuth: true },
-                    /* 独享路由守卫 */
-                    /* beforeEnter: (to, from, next) => {
-                        console.log('独享路由守卫', to, from);
-                        if (to.meta.isAuth) {//判断是否需要鉴权
-                            if (localStorage.getItem('school') === 'atguigu') {
-                                // document.title = to.meta.title || '硅谷系统'
-                                next()
-                            } else {
-                                alert('无权查看')
-                            }
-                        } else {
-                            // document.title = to.meta.title || '硅谷系统'
-                            next()
-                        }
-                    } */
-
                 },
                 {
                     name: 'xiaoxi',
