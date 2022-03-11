@@ -2,13 +2,11 @@
 
 <img src="https://user-images.githubusercontent.com/499550/93624428-53932780-f9ae-11ea-8d16-af949e16a09f.png" style="width:200px" />
 
-
-
 ## 1.Vue3简介
 
 - 2020年9月18日，Vue.js发布3.0版本，代号：One Piece（海贼王）
-- 耗时2年多、[2600+次提交](https://github.com/vuejs/vue-next/graphs/commit-activity)、[30+个RFC](https://github.com/vuejs/rfcs/tree/master/active-rfcs)、[600+次PR](https://github.com/vuejs/vue-next/pulls?q=is%3Apr+is%3Amerged+-author%3Aapp%2Fdependabot-preview+)、[99位贡献者](https://github.com/vuejs/vue-next/graphs/contributors) 
-- github上的tags地址：https://github.com/vuejs/vue-next/releases/tag/v3.0.0
+- 耗时2年多、[2600+次提交](https://github.com/vuejs/vue-next/graphs/commit-activity)、[30+个RFC](https://github.com/vuejs/rfcs/tree/master/active-rfcs)、[600+次PR](https://github.com/vuejs/vue-next/pulls?q=is%3Apr+is%3Amerged+-author%3Aapp%2Fdependabot-preview+)、[99位贡献者](https://github.com/vuejs/vue-next/graphs/contributors)
+- github上的tags地址：<https://github.com/vuejs/vue-next/releases/tag/v3.0.0>
 
 ## 2.Vue3带来了什么
 
@@ -44,7 +42,7 @@
    - provide与inject
    - ......
 2. 新的内置组件
-   - Fragment 
+   - Fragment
    - Teleport
    - Suspense
 3. 其他改变
@@ -58,7 +56,7 @@
 
 ## 1.使用 vue-cli 创建
 
-官方文档：https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create
+官方文档：<https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create>
 
 ```bash
 ## 查看@vue/cli版本，确保@vue/cli版本在4.5.0以上
@@ -74,9 +72,9 @@ npm run serve
 
 ## 2.使用 vite 创建
 
-官方文档：https://v3.cn.vuejs.org/guide/installation.html#vite
+官方文档：<https://v3.cn.vuejs.org/guide/installation.html#vite>
 
-vite官网：https://vitejs.cn
+vite官网：<https://vitejs.cn>
 
 - 什么是vite？—— 新一代前端构建工具。
 - 优势如下：
@@ -100,7 +98,7 @@ npm run dev
 
 # 二、常用 Composition API
 
-官方文档: https://v3.cn.vuejs.org/guide/composition-api-introduction.html
+官方文档: <https://v3.cn.vuejs.org/guide/composition-api-introduction.html>
 
 ## 1.拉开序幕的setup
 
@@ -117,10 +115,10 @@ npm run dev
       - 如果有重名, setup优先。
    2. setup不能是一个async函数，因为返回值不再是return的对象, 而是promise, 模板看不到return对象中的属性。（后期也可以返回一个Promise实例，但需要Suspense和异步组件的配合）
 
-##  2.ref函数
+## 2.ref函数
 
 - 作用: 定义一个响应式的数据
-- 语法: ```const xxx = ref(initValue)``` 
+- 语法: ```const xxx = ref(initValue)```
   - 创建一个包含响应式数据的<strong style="color:#DD5145">引用对象（reference对象，简称ref对象）</strong>。
   - JS中操作数据： ```xxx.value```
   - 模板中读取数据: 不需要.value，直接：```<div>{{xxx}}</div>```
@@ -158,27 +156,27 @@ npm run dev
 
 ### Vue3.0的响应式
 
-- 实现原理: 
+- 实现原理:
   - 通过Proxy（代理）:  拦截对象中任意属性的变化, 包括：属性值的读写、属性的添加、属性的删除等。
   - 通过Reflect（反射）:  对源对象的属性进行操作。
   - MDN文档中描述的Proxy与Reflect：
-    - Proxy：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy
-    
-    - Reflect：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect
-    
+    - Proxy：<https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy>
+
+    - Reflect：<https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect>
+
       ```js
       new Proxy(data, {
-      	// 拦截读取属性值
+       // 拦截读取属性值
           get (target, prop) {
-          	return Reflect.get(target, prop)
+           return Reflect.get(target, prop)
           },
           // 拦截设置属性值或添加新属性
           set (target, prop, value) {
-          	return Reflect.set(target, prop, value)
+           return Reflect.set(target, prop, value)
           },
           // 拦截删除属性
           deleteProperty (target, prop) {
-          	return Reflect.deleteProperty(target, prop)
+           return Reflect.deleteProperty(target, prop)
           }
       })
       
@@ -187,16 +185,16 @@ npm run dev
 
 ## 5.reactive对比ref
 
--  从定义数据角度对比：
-   -  ref用来定义：<strong style="color:#DD5145">基本类型数据</strong>。
-   -  reactive用来定义：<strong style="color:#DD5145">对象（或数组）类型数据</strong>。
-   -  备注：ref也可以用来定义<strong style="color:#DD5145">对象（或数组）类型数据</strong>, 它内部会自动通过```reactive```转为<strong style="color:#DD5145">代理对象</strong>。
--  从原理角度对比：
-   -  ref通过``Object.defineProperty()``的```get```与```set```来实现响应式（数据劫持）。
-   -  reactive通过使用<strong style="color:#DD5145">Proxy</strong>来实现响应式（数据劫持）, 并通过<strong style="color:#DD5145">Reflect</strong>操作<strong style="color:orange">源对象</strong>内部的数据。
--  从使用角度对比：
-   -  ref定义的数据：操作数据<strong style="color:#DD5145">需要</strong>```.value```，读取数据时模板中直接读取<strong style="color:#DD5145">不需要</strong>```.value```。
-   -  reactive定义的数据：操作数据与读取数据：<strong style="color:#DD5145">均不需要</strong>```.value```。
+- 从定义数据角度对比：
+  - ref用来定义：<strong style="color:#DD5145">基本类型数据</strong>。
+  - reactive用来定义：<strong style="color:#DD5145">对象（或数组）类型数据</strong>。
+  - 备注：ref也可以用来定义<strong style="color:#DD5145">对象（或数组）类型数据</strong>, 它内部会自动通过```reactive```转为<strong style="color:#DD5145">代理对象</strong>。
+- 从原理角度对比：
+  - ref通过``Object.defineProperty()``的```get```与```set```来实现响应式（数据劫持）。
+  - reactive通过使用<strong style="color:#DD5145">Proxy</strong>来实现响应式（数据劫持）, 并通过<strong style="color:#DD5145">Reflect</strong>操作<strong style="color:orange">源对象</strong>内部的数据。
+- 从使用角度对比：
+  - ref定义的数据：操作数据<strong style="color:#DD5145">需要</strong>```.value```，读取数据时模板中直接读取<strong style="color:#DD5145">不需要</strong>```.value```。
+  - reactive定义的数据：操作数据与读取数据：<strong style="color:#DD5145">均不需要</strong>```.value```。
 
 ## 6.setup的两个注意点
 
@@ -209,7 +207,6 @@ npm run dev
     - attrs: 值为对象，包含：组件外部传递过来，但没有在props配置中声明的属性, 相当于 ```this.$attrs```。
     - slots: 收到的插槽内容, 相当于 ```this.$slots```。
     - emit: 分发自定义事件的函数, 相当于 ```this.$emit```。
-
 
 ## 7.计算属性与监视
 
@@ -224,7 +221,7 @@ npm run dev
   
   setup(){
       ...
-  	//计算属性——简写
+   //计算属性——简写
       let fullName = computed(()=>{
           return person.firstName + '-' + person.lastName
       })
@@ -254,30 +251,30 @@ npm run dev
   ```js
   //情况一：监视ref定义的响应式数据
   watch(sum,(newValue,oldValue)=>{
-  	console.log('sum变化了',newValue,oldValue)
+   console.log('sum变化了',newValue,oldValue)
   },{immediate:true})
   
   //情况二：监视多个ref定义的响应式数据
   watch([sum,msg],(newValue,oldValue)=>{
-  	console.log('sum或msg变化了',newValue,oldValue)
+   console.log('sum或msg变化了',newValue,oldValue)
   }) 
   
   /* 情况三：监视reactive定义的响应式数据
-  			若watch监视的是reactive定义的响应式数据，则无法正确获得oldValue！！
-  			若watch监视的是reactive定义的响应式数据，则强制开启了深度监视 
+     若watch监视的是reactive定义的响应式数据，则无法正确获得oldValue！！
+     若watch监视的是reactive定义的响应式数据，则强制开启了深度监视 
   */
   watch(person,(newValue,oldValue)=>{
-  	console.log('person变化了',newValue,oldValue)
+   console.log('person变化了',newValue,oldValue)
   },{immediate:true,deep:false}) //此处的deep配置不再奏效
   
   //情况四：监视reactive定义的响应式数据中的某个属性
   watch(()=>person.job,(newValue,oldValue)=>{
-  	console.log('person的job变化了',newValue,oldValue)
+   console.log('person的job变化了',newValue,oldValue)
   },{immediate:true,deep:true}) 
   
   //情况五：监视reactive定义的响应式数据中的某些属性
   watch([()=>person.job,()=>person.name],(newValue,oldValue)=>{
-  	console.log('person的job变化了',newValue,oldValue)
+   console.log('person的job变化了',newValue,oldValue)
   },{immediate:true,deep:true})
   
   //特殊情况
@@ -310,42 +307,6 @@ npm run dev
 
 <div style="border:1px solid black;width:380px;float:left;margin-right:20px;"><strong>vue2.x的生命周期</strong><img src="https://cn.vuejs.org/images/lifecycle.png" alt="lifecycle_2" style="zoom:33%;width:1200px" /></div><div style="border:1px solid black;width:510px;height:985px;float:left"><strong>vue3.0的生命周期</strong><img src="https://v3.cn.vuejs.org/images/lifecycle.svg" alt="lifecycle_2" style="zoom:33%;width:2500px" /></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 1
 
 - Vue3.0中可以继续使用Vue2.x中的生命周期钩子，但有有两个被更名：
@@ -369,17 +330,13 @@ npm run dev
 
 - 自定义hook的优势: 复用代码, 让setup中的逻辑更清楚易懂。
 
-
-
 ## 10.toRef
 
 - 作用：创建一个 ref 对象，其value值指向另一个对象中的某个属性。
 - 语法：```const name = toRef(person,'name')```
 - 应用:   要将响应式对象中的某个属性单独提供给外部使用时。
 
-
 - 扩展：```toRefs``` 与```toRef```功能一致，但可以批量创建多个 ref 对象，语法：```toRefs(person)```
-
 
 # 三、其它 Composition API
 
@@ -389,8 +346,8 @@ npm run dev
 - shallowRef：只处理基本数据类型的响应式, 不进行对象的响应式处理。
 
 - 什么时候使用?
-  -  如果有一个对象数据，结构比较深, 但变化时只是外层属性变化 ===> shallowReactive。
-  -  如果有一个对象数据，后续功能不会修改该对象中的属性，而是生新的对象来替换 ===> shallowRef。
+  - 如果有一个对象数据，结构比较深, 但变化时只是外层属性变化 ===> shallowReactive。
+  - 如果有一个对象数据，后续功能不会修改该对象中的属性，而是生新的对象来替换 ===> shallowRef。
 
 ## 2.readonly 与 shallowReadonly
 
@@ -417,46 +374,44 @@ npm run dev
 
   ```vue
   <template>
-  	<input type="text" v-model="keyword">
-  	<h3>{{keyword}}</h3>
+   <input type="text" v-model="keyword">
+   <h3>{{keyword}}</h3>
   </template>
   
   <script>
-  	import {ref,customRef} from 'vue'
-  	export default {
-  		name:'Demo',
-  		setup(){
-  			// let keyword = ref('hello') //使用Vue准备好的内置ref
-  			//自定义一个myRef
-  			function myRef(value,delay){
-  				let timer
-  				//通过customRef去实现自定义
-  				return customRef((track,trigger)=>{
-  					return{
-  						get(){
-  							track() //告诉Vue这个value值是需要被“追踪”的
-  							return value
-  						},
-  						set(newValue){
-  							clearTimeout(timer)
-  							timer = setTimeout(()=>{
-  								value = newValue
-  								trigger() //告诉Vue去更新界面
-  							},delay)
-  						}
-  					}
-  				})
-  			}
-  			let keyword = myRef('hello',500) //使用程序员自定义的ref
-  			return {
-  				keyword
-  			}
-  		}
-  	}
+   import {ref,customRef} from 'vue'
+   export default {
+    name:'Demo',
+    setup(){
+     // let keyword = ref('hello') //使用Vue准备好的内置ref
+     //自定义一个myRef
+     function myRef(value,delay){
+      let timer
+      //通过customRef去实现自定义
+      return customRef((track,trigger)=>{
+       return{
+        get(){
+         track() //告诉Vue这个value值是需要被“追踪”的
+         return value
+        },
+        set(newValue){
+         clearTimeout(timer)
+         timer = setTimeout(()=>{
+          value = newValue
+          trigger() //告诉Vue去更新界面
+         },delay)
+        }
+       }
+      })
+     }
+     let keyword = myRef('hello',500) //使用程序员自定义的ref
+     return {
+      keyword
+     }
+    }
+   }
   </script>
   ```
-
-  
 
 ## 5.provide 与 inject
 
@@ -472,7 +427,7 @@ npm run dev
 
      ```js
      setup(){
-     	......
+      ......
          let car = reactive({name:'奔驰',price:'40万'})
          provide('car',car)
          ......
@@ -483,10 +438,10 @@ npm run dev
 
      ```js
      setup(props,context){
-     	......
+      ......
          const car = inject('car')
          return {car}
-     	......
+      ......
      }
      ```
 
@@ -507,22 +462,8 @@ npm run dev
     <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f84e4e2c02424d9a99862ade0a2e4114~tplv-k3u1fbpfcp-watermark.image" style="width:600px;float:left" />
 </div>
 <div style="width:300px;height:370px;overflow:hidden;float:left">
-    <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5ac7e20d1784887a826f6360768a368~tplv-k3u1fbpfcp-watermark.image" style="zoom:50%;width:560px;left" /> 
+    <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5ac7e20d1784887a826f6360768a368~tplv-k3u1fbpfcp-watermark.image" style="zoom:50%;width:560px;left" />
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## 2.Composition API 的优势
 
@@ -534,18 +475,6 @@ npm run dev
 <div style="width:430px;height:340px;overflow:hidden;float:left">
     <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6cc55165c0e34069a75fe36f8712eb80~tplv-k3u1fbpfcp-watermark.image"style="height:360px"/>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 # 五、新的组件
 
@@ -561,12 +490,12 @@ npm run dev
 
   ```vue
   <teleport to="移动位置">
-  	<div v-if="isShow" class="mask">
-  		<div class="dialog">
-  			<h3>我是一个弹窗</h3>
-  			<button @click="isShow = false">关闭弹窗</button>
-  		</div>
-  	</div>
+   <div v-if="isShow" class="mask">
+    <div class="dialog">
+     <h3>我是一个弹窗</h3>
+     <button @click="isShow = false">关闭弹窗</button>
+    </div>
+   </div>
   </teleport>
   ```
 
@@ -587,17 +516,17 @@ npm run dev
 
     ```vue
     <template>
-    	<div class="app">
-    		<h3>我是App组件</h3>
-    		<Suspense>
-    			<template v-slot:default>
-    				<Child/>
-    			</template>
-    			<template v-slot:fallback>
-    				<h3>加载中.....</h3>
-    			</template>
-    		</Suspense>
-    	</div>
+     <div class="app">
+      <h3>我是App组件</h3>
+      <Suspense>
+       <template v-slot:default>
+        <Child/>
+       </template>
+       <template v-slot:fallback>
+        <h3>加载中.....</h3>
+       </template>
+      </Suspense>
+     </div>
     </template>
     ```
 
@@ -637,7 +566,6 @@ npm run dev
     | Vue.use                   | app.use                                     |
     | Vue.prototype             | app.config.globalProperties                 |
   
-
 ## 2.其他改变
 
 - data选项应始终被声明为一个函数。
