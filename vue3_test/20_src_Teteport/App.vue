@@ -6,10 +6,7 @@
 </template>
 
 <script>
-// import Child from "./components/Child.vue";//静态引入
-
-import { defineAsyncComponent } from "vue";
-const Child = defineAsyncComponent(() => import("./components/Child"));//异步&动态引入
+import Child from "./components/Child.vue";
 export default {
   name: "App",
   components: { Child },
