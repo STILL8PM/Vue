@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { reactive, toRefs, ref} from "vue";
+import { reactive, toRefs, ref ,readonly,shallowReadonly} from "vue";
 export default {
   name: "Demo",
   setup() {
@@ -27,6 +27,10 @@ export default {
         },
       },
     });
+    // person=readonly(person)
+    // person=shallowReadonly(person)
+    // sum=readonly(sum)
+    // sum=shallowReadonly(sum)
 
     return {
       sum,

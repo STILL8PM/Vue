@@ -1,6 +1,6 @@
 <template>
-  <h4>当前求和为:{{ sum }}</h4>
-  <button @click="sum++">点我++</button>
+  <h4>当前x的值为:{{ x.y }}</h4>
+  <button @click="x.y++">点我x++</button>
   <hr />
   <h2>姓名：{{ name }}</h2>
   <h2>年龄：{{ age }}</h2>
@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import { reactive, toRefs, ref} from "vue";
+import { reactive, toRefs, shallowRef, shallowReactive, ref } from "vue";
 export default {
   name: "Demo",
   setup() {
     //数据
-    let sum = ref(0);
-    let person = reactive({
+
+    let person = shallowReactive({
       name: "张三",
       age: 18,
       job: {
@@ -28,8 +28,11 @@ export default {
       },
     });
 
+    let x = shallowRef({
+      y: 0,
+    });
     return {
-      sum,
+      x,
       ...toRefs(person),
     };
   },
